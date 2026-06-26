@@ -10,28 +10,28 @@ import { VibracionChart, AsentamientoChart, AmbientalChart } from "@/components/
 
 function IconV() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M2 12c2-5 3 5 5 0s3 5 5 0 3 5 5 0 3 5 5 0" />
     </svg>
   );
 }
 function IconD() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M12 3v8m0 0-4-4m4 4 4-4M4 15h16M4 19h16" />
     </svg>
   );
 }
 function IconT() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0Z" />
     </svg>
   );
 }
 function IconH() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M12 2.5S5 10 5 14a7 7 0 0 0 14 0c0-4-7-11.5-7-11.5Z" />
     </svg>
   );
@@ -54,22 +54,16 @@ export default function Page() {
     : "—";
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#f3f4f6]">
       {/* HEADER */}
-      <header className="sticky top-0 z-10 border-b border-line bg-ink/85 backdrop-blur supports-[backdrop-filter]:bg-ink/65">
+      <header className="sticky top-0 z-10 border-b border-line bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/70">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex h-14 items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md border border-line">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" strokeWidth="1.6">
-                  <path d="M3 17h18M6 17V9l6-5 6 5v8M10 17v-4h4v4" />
-                </svg>
-              </div>
+          <div className="flex h-12 items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <img src="/autopista.png" alt="Puente Monitor" className="h-7 w-7 object-contain" />
               <div className="leading-tight">
-                <div className="text-sm font-semibold tracking-tight">PUENTE.MONITOR</div>
-                <div className="hidden text-[10px] font-mono uppercase tracking-[0.2em] text-muted sm:block">
-                  Condition Assessment System
-                </div>
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Puente Monitor</span>
+                <span className="block text-[9px] font-mono uppercase tracking-[0.12em] text-muted">Structural Assessment</span>
               </div>
             </div>
             <ConnectionIndicator estado={conexion} host={host} topic={topic} />
@@ -77,39 +71,39 @@ export default function Page() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-        {/* GRID BG SECTION */}
-        <section className="grid-bg relative -mx-4 -mt-2 mb-6 overflow-hidden rounded-xl border border-line px-4 py-5 sm:-mx-6 sm:px-6 scan-line">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6">
+        {/* HERO */}
+        <section className="mb-5 rounded-xl border border-line bg-elevated px-5 py-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted">
+              <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-muted">
                 Estructura · Sector A
               </span>
-              <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h1 className="mt-0.5 text-xl font-semibold text-gray-800 sm:text-2xl">
                 Monitoreo estructural en tiempo real
               </h1>
-              <p className="mt-1 max-w-xl text-sm text-muted">
-                Adquisición Raspberry Pi 4 · MPU6050 / HC-SR04 / DHT22 · MQTT · IA de clasificación
+              <p className="mt-0.5 text-xs text-muted">
+                Raspberry Pi 4 · MPU6050 / HC-SR04 / DHT22 · Clasificación IA
               </p>
             </div>
             <button
               onClick={limpiar}
-              className="self-start rounded-md border border-line px-3 py-1.5 text-xs font-mono text-muted transition-colors hover:text-white hover:border-line/70"
+              className="self-start rounded-md border border-gray-200 px-3 py-1.5 text-[10px] font-mono text-muted transition-colors hover:border-gray-300 hover:text-gray-700"
             >
               LIMPIAR
             </button>
           </div>
 
-          {/* barra de nivel */}
-          <div className="mt-5 flex items-center gap-2">
+          {/* Risk bar */}
+          <div className="mt-4 flex items-center gap-2">
             {estadoActual && meta ? (
               <div className="flex w-full items-center gap-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-muted">
-                  Nivel de riesgo
+                <span className="text-[9px] font-mono uppercase tracking-wider text-muted">
+                  Riesgo
                 </span>
                 <div className="flex flex-1 gap-1">
                   {(["muy seguro", "seguro", "precaucion", "critico", "emergencia"] as const).map(
-                    (k, idx) => {
+                    (k) => {
                       const m = ESTADO_META[k];
                       const activo = meta.level >= m.level;
                       return (
@@ -117,8 +111,8 @@ export default function Page() {
                           key={k}
                           className="h-1.5 flex-1 rounded-full transition-all"
                           style={{
-                            background: activo ? m.color : "#27272A",
-                            opacity: activo ? 1 : 0.55,
+                            background: activo ? m.color : "#e5e7eb",
+                            opacity: activo ? 1 : 0.5,
                           }}
                           title={m.label}
                         />
@@ -126,34 +120,51 @@ export default function Page() {
                     }
                   )}
                 </div>
-                <span className="text-[10px] font-mono" style={{ color: meta.color }}>
+                <span className="text-[10px] font-mono font-medium" style={{ color: meta.color }}>
                   {meta.label}
                 </span>
               </div>
             ) : (
               <div className="flex w-full gap-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <div key={i} className="h-1.5 flex-1 rounded-full bg-line" />
+                  <div key={i} className="h-1.5 flex-1 rounded-full bg-gray-200" />
                 ))}
               </div>
             )}
           </div>
         </section>
 
-        {/* CARDS sensores */}
+        {/* SENSOR CARDS */}
         <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <SensorCard
             id="MPU6050"
             label="Vibración"
             value={vibracion ? vibracion.rms.toFixed(2) : "—"}
             unit="g"
-            accent="#22D3EE"
+            accent="#0d9488"
             icon={<IconV />}
             sub={
               vibracion ? (
-                <span>
-                  {vibracion.frecuencia_dominante_hz} Hz · {vibracion.estado}
-                </span>
+                <div className="mt-2 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-muted">Frecuencia dominante</span>
+                    <span className="text-xs font-mono font-semibold tabular-nums text-gray-700">
+                      {vibracion.frecuencia_dominante_hz} <span className="font-normal text-muted">Hz</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-muted">Vibración en puente</span>
+                    <span className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[9px] font-semibold font-mono tracking-wide uppercase"
+                      style={{
+                        background: vibracion.estado?.includes("activa") ? "#16a34a18" : "#6b728018",
+                        color: vibracion.estado?.includes("activa") ? "#16a34a" : "#6b7280"
+                      }}
+                    >
+                      <span className={`inline-block h-1.5 w-1.5 rounded-full ${vibracion.estado?.includes("activa") ? "bg-[#16a34a]" : "bg-[#6b7280]"}`} />
+                      {vibracion.estado?.includes("activa") ? "ACTIVA" : "INACTIVA"}
+                    </span>
+                  </div>
+                </div>
               ) : (
                 <span className="text-muted/50">sin datos</span>
               )
@@ -164,13 +175,11 @@ export default function Page() {
             label="Asentamiento"
             value={actual ? actual.sensores.asentamiento_cm?.toFixed(2) ?? "—" : "—"}
             unit="cm"
-            accent="#FBBF24"
+            accent="#ca8a04"
             icon={<IconD />}
             sub={
               actual ? (
-                <span>
-                  {(actual.sensores.asentamiento_cm ?? 0) >= 0 ? "elevación" : "hundimiento"}
-                </span>
+                <span>{(actual.sensores.asentamiento_cm ?? 0) >= 0 ? "elevación" : "hundimiento"}</span>
               ) : (
                 <span className="text-muted/50">sin datos</span>
               )
@@ -181,7 +190,7 @@ export default function Page() {
             label="Temperatura"
             value={actual ? actual.sensores.temperatura?.toFixed(1) ?? "—" : "—"}
             unit="°C"
-            accent="#F87171"
+            accent="#dc2626"
             icon={<IconT />}
             sub={actual ? <span>ambiente</span> : <span className="text-muted/50">sin datos</span>}
           />
@@ -190,13 +199,13 @@ export default function Page() {
             label="Humedad"
             value={actual ? actual.sensores.humedad?.toFixed(1) ?? "—" : "—"}
             unit="%"
-            accent="#4ADE80"
+            accent="#0d9488"
             icon={<IconH />}
             sub={actual ? <span>relativa</span> : <span className="text-muted/50">sin datos</span>}
           />
         </section>
 
-        {/* CLASIFICACIÓN + INFO */}
+        {/* CLASIFICACIÓN + METADATA */}
         <section className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
           {estadoActual ? (
             <ClassificationBadge
@@ -204,41 +213,35 @@ export default function Page() {
               probabilidad={estadoActual.probabilidad}
             />
           ) : (
-            <div className="rounded-xl border border-dashed border-line bg-surface p-5 flex items-center justify-center text-sm text-muted">
+            <div className="rounded-xl border border-dashed border-gray-300 bg-elevated p-5 flex items-center justify-center text-sm text-muted">
               Esperando clasificación…
             </div>
           )}
 
-          <div className="rounded-xl border border-line bg-surface p-5 lg:col-span-2">
+          <div className="rounded-xl border border-line bg-elevated p-5 lg:col-span-2">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               <Metric label="Últ. muestra" value={ahora} />
-              <Metric
-                label="Fecha"
-                value={actual?.fecha ?? "—"}
-              />
+              <Metric label="Fecha" value={actual?.fecha ?? "—"} />
               <Metric
                 label="Probabilidad"
                 value={estadoActual ? `${(estadoActual.probabilidad * 100).toFixed(1)}%` : "—"}
               />
-              <Metric
-                label="Total muestras"
-                value={String(historial.length)}
-              />
+              <Metric label="Muestras" value={String(historial.length)} />
             </div>
 
-            {/* Detalle JSON actual */}
+            {/* JSON payload */}
             <div className="mt-5">
-              <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted">
+              <span className="text-[9px] font-mono uppercase tracking-[0.12em] text-muted">
                 Payload actual
               </span>
-              <pre className="mt-2 max-h-40 overflow-auto scrollbar-thin rounded-lg border border-line bg-ink/60 p-3 text-[11px] leading-relaxed text-accent/90">
+              <pre className="mt-2 max-h-32 overflow-auto scrollbar-thin rounded-lg border border-gray-200 bg-gray-50 p-3 text-[10px] leading-relaxed text-gray-600">
 {actual ? JSON.stringify(actual, null, 2) : "// esperando mensaje MQTT…"}
               </pre>
             </div>
           </div>
         </section>
 
-        {/* CHARTS */}
+        {/* CHARTS + TABLE */}
         <section className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-2">
           <VibracionChart datos={historial} />
           <AsentamientoChart datos={historial} />
@@ -247,7 +250,7 @@ export default function Page() {
         </section>
 
         {/* FOOTER */}
-        <footer className="mt-6 flex flex-col items-center gap-1 border-t border-line pt-4 text-[10px] font-mono uppercase tracking-[0.2em] text-muted/60">
+        <footer className="mt-8 flex flex-col items-center gap-1 border-t border-gray-200 pt-4 text-[9px] font-mono uppercase tracking-[0.15em] text-muted/50">
           <span>Puente IoT · Raspberry Pi 4 · Next.js · MQTT</span>
           <span>Sktech · 07C · 2026</span>
         </footer>
@@ -259,10 +262,8 @@ export default function Page() {
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted">
-        {label}
-      </div>
-      <div className="mt-1 text-lg font-semibold tracking-tight tabular-nums">{value}</div>
+      <div className="text-[9px] font-mono uppercase tracking-[0.1em] text-muted">{label}</div>
+      <div className="mt-0.5 text-base font-semibold tracking-tight tabular-nums text-gray-800">{value}</div>
     </div>
   );
 }

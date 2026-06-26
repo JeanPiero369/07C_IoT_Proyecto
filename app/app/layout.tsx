@@ -6,8 +6,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "PUENTE · Monitor Estructural IoT",
-  description: "Monitoreo inteligente de condición estructural en tiempo real",
+  title: "Puente Monitor · Sistema de Evaluación Estructural IoT",
+  description: "Monitoreo inteligente de condición estructural en tiempo real · Raspberry Pi 4 · MQTT · IA",
+  icons: { icon: "/autopista.png", apple: "/autopista.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

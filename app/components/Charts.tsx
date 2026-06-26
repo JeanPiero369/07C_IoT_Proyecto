@@ -27,10 +27,10 @@ function histInv(datos: MedicionPuente[]) {
 function ChartTooltip({ active, payload, label, unit }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-md border border-line bg-elevated px-2.5 py-1.5 text-[11px] font-mono shadow-xl">
-      <div className="text-muted mb-1">{label}</div>
+    <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-[11px] font-mono shadow-md">
+      <div className="text-muted mb-0.5">{label}</div>
       {payload.map((p: any) => (
-        <div key={p.dataKey} style={{ color: p.stroke || p.fill }}>
+        <div key={p.dataKey} className="tabular-nums" style={{ color: p.stroke || p.fill }}>
           {p.dataKey}: {p.value?.toFixed(2)}{unit}
         </div>
       ))}
@@ -41,27 +41,27 @@ function ChartTooltip({ active, payload, label, unit }: any) {
 export function VibracionChart({ datos }: { datos: MedicionPuente[] }) {
   const data = histInv(datos);
   return (
-    <div className="rounded-xl border border-line bg-surface p-4">
+    <div className="rounded-xl border border-line bg-elevated p-4">
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-muted">
+        <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-muted">
           Vibración · RMS
         </span>
-        <span className="text-[11px] font-mono text-accent">g</span>
+        <span className="text-[10px] font-mono text-accent/70">g</span>
       </div>
       <div className="h-44">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 5, right: 8, left: -22, bottom: 0 }}>
             <defs>
               <linearGradient id="gV" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#22D3EE" stopOpacity={0.5} />
-                <stop offset="100%" stopColor="#22D3EE" stopOpacity={0} />
+                <stop offset="0%" stopColor="#0d9488" stopOpacity={0.2} />
+                <stop offset="100%" stopColor="#0d9488" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid stroke="#27272A" strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="label" tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
-            <YAxis tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} />
+            <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="label" tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+            <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} />
             <Tooltip content={<ChartTooltip />} />
-            <Area type="monotone" dataKey="rms" stroke="#22D3EE" strokeWidth={1.6} fill="url(#gV)" />
+            <Area type="monotone" dataKey="rms" stroke="#0d9488" strokeWidth={1.6} fill="url(#gV)" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -72,27 +72,27 @@ export function VibracionChart({ datos }: { datos: MedicionPuente[] }) {
 export function AsentamientoChart({ datos }: { datos: MedicionPuente[] }) {
   const data = histInv(datos);
   return (
-    <div className="rounded-xl border border-line bg-surface p-4">
+    <div className="rounded-xl border border-line bg-elevated p-4">
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-muted">
+        <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-muted">
           Asentamiento
         </span>
-        <span className="text-[11px] font-mono text-warn">cm</span>
+        <span className="text-[10px] font-mono text-warn/70">cm</span>
       </div>
       <div className="h-44">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 5, right: 8, left: -22, bottom: 0 }}>
             <defs>
               <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#FBBF24" stopOpacity={0.4} />
-                <stop offset="100%" stopColor="#FBBF24" stopOpacity={0} />
+                <stop offset="0%" stopColor="#ca8a04" stopOpacity={0.2} />
+                <stop offset="100%" stopColor="#ca8a04" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid stroke="#27272A" strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="label" tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
-            <YAxis tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} />
+            <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="label" tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+            <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} />
             <Tooltip content={<ChartTooltip />} />
-            <Area type="monotone" dataKey="asentamiento" stroke="#FBBF24" strokeWidth={1.6} fill="url(#gA)" />
+            <Area type="monotone" dataKey="asentamiento" stroke="#ca8a04" strokeWidth={1.6} fill="url(#gA)" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -103,25 +103,25 @@ export function AsentamientoChart({ datos }: { datos: MedicionPuente[] }) {
 export function AmbientalChart({ datos }: { datos: MedicionPuente[] }) {
   const data = histInv(datos);
   return (
-    <div className="rounded-xl border border-line bg-surface p-4">
+    <div className="rounded-xl border border-line bg-elevated p-4">
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-muted">
+        <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-muted">
           Ambiental · Temp / Hum
         </span>
         <div className="flex gap-3 text-[10px] font-mono">
-          <span className="text-bad">● Temp °C</span>
-          <span className="text-accent">● Hum %</span>
+          <span className="text-bad/80">&#9679; Temp °C</span>
+          <span className="text-accent/80">&#9679; Hum %</span>
         </div>
       </div>
       <div className="h-44">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 5, right: 8, left: -22, bottom: 0 }}>
-            <CartesianGrid stroke="#27272A" strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="label" tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
-            <YAxis tick={{ fill: "#71717A", fontSize: 10 }} axisLine={false} tickLine={false} />
+            <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="label" tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+            <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} axisLine={false} tickLine={false} />
             <Tooltip content={<ChartTooltip />} />
-            <Line type="monotone" dataKey="temperatura" stroke="#F87171" strokeWidth={1.6} dot={false} />
-            <Line type="monotone" dataKey="humedad" stroke="#22D3EE" strokeWidth={1.6} dot={false} />
+            <Line type="monotone" dataKey="temperatura" stroke="#dc2626" strokeWidth={1.6} dot={false} />
+            <Line type="monotone" dataKey="humedad" stroke="#0d9488" strokeWidth={1.6} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
